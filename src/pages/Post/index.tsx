@@ -5,9 +5,9 @@ import { api } from "../../lib/axios";
 import { useParams } from "react-router-dom";
 import PostContent from "./components/Header/PostContent";
 
-const username = import.meta.env.VITE_GITHUB_USERNAME
+const username = "wll-machado"
 const repoName = import.meta.env.VITE_GITHUB_REPONAME
-const token = import.meta.env.VITE_GITHUB_TOKEN; 
+const token = import.meta.env.VITE_GITHUB_TOKEN;
 function Post() {
 
   const [postData, setPostData] = useState<Ipost>({} as Ipost);

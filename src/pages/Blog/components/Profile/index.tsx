@@ -8,8 +8,8 @@ import { api } from "../../../../lib/axios";
 import { Spinner } from "../../../../components/Spinner";
 import ExternalLink from "../../../../components/Header/ExternalLink";
 
-const username = import.meta.env.VITE_GITHUB_USERNAME;
-const token = "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"; 
+const username = "wll-machado";
+const token = import.meta.env.VITE_GITHUB_TOKEN;
 interface ProfileData {
   login: string;
   bio: string;
@@ -33,7 +33,7 @@ const getProfileData = useCallback(async () => {
     setIsLoading(true);
     const response = await api.get(`/users/${username}`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `token ${token}`,
       },
     });
 

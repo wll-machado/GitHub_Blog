@@ -8,7 +8,7 @@ import { Spinner } from "../../components/Spinner"
 
 const username = import.meta.env.VITE_GITHUB_USERNAME
 const repoName = import.meta.env.VITE_GITHUB_REPONAME
-
+const token = import.meta.env.VITE_GITHUB_TOKEN;
 export interface Ipost{
   title: string;
   body:string;
@@ -29,13 +29,17 @@ function Blog() {
   const getPosts = useCallback( async (query:string = "")=>{
     try{
       setIsLoading(true)
-      const response = await api.get(`/search/issues?q=${query}%20repo:${username}/${repoName}`);
+      const response = await api.get(`/search/issues?q=${query}%20repo:${username}/${repoName}`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      });
 
       setPosts(response.data.items);
     }finally{
       setIsLoading(false);
     }
-  },[posts])
+  },[])
 
   useEffect(()=>{
     getPosts();
